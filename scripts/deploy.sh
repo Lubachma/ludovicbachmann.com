@@ -14,7 +14,7 @@ fi
 
 # Configuration
 LOCAL_DIR="dist/portfolio/browser/"
-REMOTE_DIR="/"
+REMOTE_DIR="${FTP_REMOTE_DIR%/}/"
 
 # Couleurs
 GREEN='\033[0;32m'
@@ -42,6 +42,9 @@ read -s FTP_PASSWORD < /dev/tty
 echo
 
 echo -e "${YELLOW}Deploiement en cours vers $FTP_SERVER...${RESET}"
+
+# Corrige les permissions locales avant upload
+chmod -R a+r "$LOCAL_DIR"
 
 lftp <<EOF
 set ftp:ssl-allow yes

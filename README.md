@@ -1,8 +1,8 @@
-# ludovicbachmann.ch
+# ludovicbachmann.com
 
 Portfolio personnel construit avec **Angular 21**, **Tailwind CSS 4** et **TypeScript**. Site vitrine responsive avec dark mode, animations et formulaire de contact.
 
-**[ludovicbachmann.ch](https://ludovicbachmann.ch)**
+**[ludovicbachmann.com](https://ludovicbachmann.com)**
 
 ## Stack technique
 
