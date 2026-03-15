@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { smoothScrollTo } from '../../utils/scroll';
 
 @Component({
   selector: 'app-hero',
@@ -7,7 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './hero.scss',
 })
 export class Hero {
-  scrollTo(id: string): void {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  }
+  readonly scrollTo = smoothScrollTo;
 }

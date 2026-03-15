@@ -6,7 +6,7 @@
       <div class="skills__category">
         <h3 class="skills__category-title">{{ cat.label }}</h3>
         <div class="skills__chips">
-          @for (skill of getSkillsByCategory(cat.key); track skill.name) {
+          @for (skill of cat.skills; track skill.name) {
             <div class="skills__chip">
               @if (skill.icon) {
                 <i [class]="skill.icon + (skill.colored ? ' colored' : '')" class="skills__icon"></i>

@@ -1,14 +1,14 @@
 <header class="header">
   <div class="container header__inner">
-    <a class="header__logo font-mono" (click)="scrollTo('hero')">
+    <button class="header__logo font-mono" (click)="scrollTo('hero')">
       &lt;Ludovic /&gt;
-    </a>
+    </button>
 
     <nav class="header__nav" [class.open]="mobileMenuOpen()">
       @for (link of navLinks; track link.fragment) {
-        <a class="header__link" (click)="scrollTo(link.fragment)">
+        <button class="header__link" (click)="scrollTo(link.fragment)">
           {{ link.label }}
-        </a>
+        </button>
       }
     </nav>
 

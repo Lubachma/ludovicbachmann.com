@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Skill } from '../../models/skill.model';
 import { SKILLS } from '../../data/skills.data';
 
 @Component({
@@ -10,12 +9,8 @@ import { SKILLS } from '../../data/skills.data';
 })
 export class Skills {
   readonly categories = [
-    { key: 'frontend' as const, label: 'Langages' },
-    { key: 'backend' as const, label: 'Systèmes & Infra' },
-    { key: 'tools' as const, label: 'Outils' },
+    { key: 'frontend' as const, label: 'Langages', skills: SKILLS.filter((s) => s.category === 'frontend') },
+    { key: 'backend' as const, label: 'Systèmes & Infra', skills: SKILLS.filter((s) => s.category === 'backend') },
+    { key: 'tools' as const, label: 'Outils', skills: SKILLS.filter((s) => s.category === 'tools') },
   ];
-
-  getSkillsByCategory(category: Skill['category']): Skill[] {
-    return SKILLS.filter((s) => s.category === category);
-  }
 }

@@ -1,4 +1,6 @@
 import { Component, signal } from '@angular/core';
+import { smoothScrollTo } from '../../utils/scroll';
+
 @Component({
   selector: 'app-header',
   imports: [],
@@ -6,7 +8,7 @@ import { Component, signal } from '@angular/core';
   styleUrl: './header.scss',
 })
 export class Header {
-  isDark = signal(false);
+  isDark = signal(this.getInitialTheme());
   mobileMenuOpen = signal(false);
 
   readonly navLinks = [
@@ -20,7 +22,9 @@ export class Header {
 
   toggleTheme(): void {
     this.isDark.update((v) => !v);
-    document.documentElement.setAttribute('data-theme', this.isDark() ? 'dark' : 'light');
+    const theme = this.isDark() ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }
 
   toggleMobileMenu(): void {
@@ -29,6 +33,12 @@ export class Header {
 
   scrollTo(fragment: string): void {
     this.mobileMenuOpen.set(false);
-    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' });
+    smoothScrollTo(fragment);
+  }
+
+  private getInitialTheme(): boolean {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 }

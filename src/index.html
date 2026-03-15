@@ -12,9 +12,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ludovic Bachmann | Développeur Logiciel Junior">
   <meta property="og:description" content="Développeur logiciel junior formé à l'École 42. C/C++, TypeScript, Docker, Linux. Basé à Genève.">
-  <meta property="og:image" content="assets/images/og-image.webp">
+  <meta property="og:image" content="https://ludovicbachmann.com/assets/images/photo.jpeg">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css" integrity="sha384-6iv3tXABd3c9DYulXujJl8n22ahn/12f45MomxoPv6jBX4LBE4gNJjfkx5mAKIqR" crossorigin="anonymous">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
@@ -24,6 +24,13 @@
   <!-- Preconnect pour Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

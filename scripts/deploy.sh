@@ -3,6 +3,12 @@
 
 set -e
 
+# Couleurs
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+RESET='\033[0m'
+
 # Charge les variables d'environnement
 if [ -f .env ]; then
     source .env
@@ -15,12 +21,6 @@ fi
 # Configuration
 LOCAL_DIR="dist/portfolio/browser/"
 REMOTE_DIR="${FTP_REMOTE_DIR%/}/"
-
-# Couleurs
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-YELLOW='\033[0;33m'
-RESET='\033[0m'
 
 # Verifie que lftp est installe
 if ! command -v lftp &> /dev/null; then
@@ -48,11 +48,11 @@ chmod -R a+r "$LOCAL_DIR"
 
 lftp <<EOF
 set ftp:ssl-allow yes
-set ssl:verify-certificate no
+set ssl:verify-certificate yes
 set net:max-retries 3
 set net:reconnect-interval-base 5
-open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER
-mirror -R $LOCAL_DIR $REMOTE_DIR
+open -u "$FTP_USER","$FTP_PASSWORD" "$FTP_SERVER"
+mirror -R "$LOCAL_DIR" "$REMOTE_DIR"
 bye
 EOF
 
